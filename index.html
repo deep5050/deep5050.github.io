@@ -34,6 +34,65 @@
 	text-align: center;
 }
 </style>
+<script>
+
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 100;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #ffff}";
+        document.body.appendChild(css);
+    };
+</script>
 </head>
 
 <body id="top">
@@ -75,14 +134,24 @@
    	<div class="intro-content">
    		<div class="row">
 
-   			<div class="col-twelve">
+   			<div class="col-twelve ">
 
-	   			<h5>Hello, World.</h5>
+	   			<h5 class="">Hello, World.</h5>
 					 <h1>I'm Dipankar</h1>
 	   			<p class="intro-position">
-	   				<span>Full Stack Developer</span>
-            <span>Photographer</span>
-	   			</p>
+	   				<!--<span>Full Stack Developer</span>
+						<span>Photographer</span>
+						-->
+	   		
+
+
+					 <h3 style="color:white;">
+							<a href="" class="typewrite" data-period="2000" data-type='[ "Full Stack Developer", "UI/UX Designer", "Web Developer","Photographer","Open Source" ]'style="color:#FF0077;font-family:consolas;">
+								<span class="wrap"></span>
+							</a>
+						</h3>
+
+					</p>
 
 	   			<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
 
@@ -92,11 +161,11 @@
    	</div> <!-- /intro-content --> 
 
    	<ul class="intro-social">        
-         <li><a href="https://www.facebook.com/deep.neon"><i class="fa fa-facebook"></i></a></li>
+         <li><a href="https://www.facebook.com/deep.neon" target="_blank"><i class="fa fa-facebook"></i></a></li>
          <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
          <!-- <li><a href="#"><i class="fa fa-slack"></i></a></li> -->
-         <li><a href="https://www.github.com/deep5050"><i class="fa fa-github"></i></a></li>
-         <li><a href="https://www.instagram.com/dipankarpal5050"><i class="fa fa-instagram"></i></a></li>
+         <li><a href="https://www.github.com/deep5050" target="_blank" ><i class="fa fa-github"></i></a></li>
+         <li><a href="https://www.instagram.com/dipankarpal5050" target="_blank"><i class="fa fa-instagram"></i></a></li>
       </ul> <!-- /intro-social -->      	
 
    </section> <!-- /intro -->
@@ -106,7 +175,7 @@
    ================================================== -->
    <section id="about">  
 
-   	<div class="row section-intro">
+   	<div class="row section-intro ">
    		<div class="col-twelve">
 
    			<h5>About</h5>
@@ -116,7 +185,7 @@
 
    				<img src="images/profile-pic.png" alt="Profile Picture">
 
-   				<p class="lead">I am a full stack developer currenly pursuing a Master's degree in Computer Science with a keen interest in web development and gradually delving into machine learning and UI/UX designing.</p>
+   				<p class="lead" style="color: #FF0077;font-family: consolas;">I Am A Full Stack Developer Currently Pursuing A Master's Degree In Computer Science With A Keen Interest In Web Development And Gradually Delving Into Machine Learning And UI/UX Designing.</p>
    			</div>   			
 
    		</div>   		
@@ -148,18 +217,14 @@
    				</li>
    				<li>
    					<strong>Email:</strong>
-   					<span>d.pal5050@gmail.com</span>
+   					<span><a href="mailto:d.pal5050@gmail.com">d.pal5050@gmail.com</a></span>
    				</li>
-
-   			</ul> <!-- /info-list -->
-
+   			</ul> 
    		</div>
 
    		<div class="col-six tab-full">
-
    			<h3>Skills</h3>
-   			<!-- <p>SOME OF MY SKILLS ARE</p> -->
-
+   			
 				<ul class="skill-bars">
 				   <li>
 				   	<div class="progress percent90"><span>90%</span></div>
@@ -204,7 +269,7 @@
    	<div class="row button-section">
    		<div class="col-twelve">
    			<!-- <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a> -->
-   			<a href="#" title="Download CV" class="button button-primary">Download CV</a>
+   			<a href="./assets/dipankar_pal_cv.pdf" title="Download CV" class="button button-primary">Download CV</a>
    		</div>   		
    	</div>
 
@@ -627,7 +692,9 @@
 
 
 	<!-- CTA Section
-   ================================================== -->
+	 ================================================== -->
+
+	 
 	<section id="cta" class="grey-section">
 
    	<div class="row cta-content">

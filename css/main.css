@@ -77,6 +77,27 @@ body {
 	color: #6e6e6e;
 }
 
+
+body::-webkit-scrollbar {
+	width: 0.2em;
+	color: rgb(255, 0, 119);
+}
+ 
+body::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 0px rgb(240, 12, 137);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(255, 0, 119);
+ /*  outline: 1px solid rgb(255, 255, 255); */
+ 
+}
+
+
+
+
+
+
 /**
  * links - (_document-setup.scss)
  * -------------------------------------------------------------------
@@ -1273,13 +1294,15 @@ header .logo a {
 @media only screen and (max-width:768px) {
 	header .top-bar {
 		left: 30px;
-		margin-left: -26px;
-		margin-top: 4px;
+		margin-left: -28px;
+		margin-top: 2px;
 	}
 }
 @media only screen and (max-width:600px) {
 	header .top-bar {
 		left: 28px;
+		margin-left: -26px;
+		margin-top: 2px;
 	}
 }
 @media only screen and (max-width:400px) {
