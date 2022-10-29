@@ -1,1100 +1,430 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="no-js oldie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html class="no-js" lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
 <head>
-
-   <!--- basic page needs
-   ================================================== -->
-   <meta charset="utf-8">
+	<meta charset="utf-8">
 	<title>Dipankar Pal</title>
-	<meta name="description" content="">  
+	<meta name="description" content="">
 	<meta name="author" content="">
-
-   <!-- mobile specific metas
-   ================================================== -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/vendor.css">
 
- 	<!-- CSS
-   ================================================== -->
-   <link rel="stylesheet" href="css/base.css">  
-   <link rel="stylesheet" href="css/main.css">
-   <link rel="stylesheet" href="css/vendor.css">     
-
-   <!-- script
-   ================================================== -->   
 	<script src="js/modernizr.js"></script>
 	<script src="js/pace.min.js"></script>
 
-   <!-- favicons
-	================================================== -->
 	<link rel="icon" type="image/png" href="favicon.svg">
-<style>
-.item-wrap{
-	text-align: center;
-}
-</style>
-<script>
+	<style>
+		.item-wrap {
+			text-align: center;
+		}
+	</style>
+	<script>
 
-var TxtType = function(el, toRotate, period) {
-        this.toRotate = toRotate;
-        this.el = el;
-        this.loopNum = 0;
-        this.period = parseInt(period, 10) || 2000;
-        this.txt = '';
-        this.tick();
-        this.isDeleting = false;
-    };
+		var TxtType = function (el, toRotate, period) {
+			this.toRotate = toRotate;
+			this.el = el;
+			this.loopNum = 0;
+			this.period = parseInt(period, 10) || 2000;
+			this.txt = '';
+			this.tick();
+			this.isDeleting = false;
+		};
 
-    TxtType.prototype.tick = function() {
-        var i = this.loopNum % this.toRotate.length;
-        var fullTxt = this.toRotate[i];
+		TxtType.prototype.tick = function () {
+			var i = this.loopNum % this.toRotate.length;
+			var fullTxt = this.toRotate[i];
 
-        if (this.isDeleting) {
-        this.txt = fullTxt.substring(0, this.txt.length - 1);
-        } else {
-        this.txt = fullTxt.substring(0, this.txt.length + 1);
-        }
+			if (this.isDeleting) {
+				this.txt = fullTxt.substring(0, this.txt.length - 1);
+			} else {
+				this.txt = fullTxt.substring(0, this.txt.length + 1);
+			}
 
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+			this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
-        var that = this;
-        var delta = 200 - Math.random() * 100;
+			var that = this;
+			var delta = 200 - Math.random() * 100;
 
-        if (this.isDeleting) { delta /= 2; }
+			if (this.isDeleting) { delta /= 2; }
 
-        if (!this.isDeleting && this.txt === fullTxt) {
-        delta = this.period;
-        this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-        this.isDeleting = false;
-        this.loopNum++;
-        delta = 100;
-        }
+			if (!this.isDeleting && this.txt === fullTxt) {
+				delta = this.period;
+				this.isDeleting = true;
+			} else if (this.isDeleting && this.txt === '') {
+				this.isDeleting = false;
+				this.loopNum++;
+				delta = 100;
+			}
 
-        setTimeout(function() {
-        that.tick();
-        }, delta);
-    };
+			setTimeout(function () {
+				that.tick();
+			}, delta);
+		};
 
-    window.onload = function() {
-        var elements = document.getElementsByClassName('typewrite');
-        for (var i=0; i<elements.length; i++) {
-            var toRotate = elements[i].getAttribute('data-type');
-            var period = elements[i].getAttribute('data-period');
-            if (toRotate) {
-              new TxtType(elements[i], JSON.parse(toRotate), period);
-            }
-        }
-        // INJECT CSS
-        var css = document.createElement("style");
-        css.type = "text/css";
-        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #ffff}";
-        document.body.appendChild(css);
-    };
-</script>
+		window.onload = function () {
+			var elements = document.getElementsByClassName('typewrite');
+			for (var i = 0; i < elements.length; i++) {
+				var toRotate = elements[i].getAttribute('data-type');
+				var period = elements[i].getAttribute('data-period');
+				if (toRotate) {
+					new TxtType(elements[i], JSON.parse(toRotate), period);
+				}
+			}
+			// INJECT CSS
+			var css = document.createElement("style");
+			css.type = "text/css";
+			css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #ffff}";
+			document.body.appendChild(css);
+		};
+	</script>
 </head>
 
 <body id="top">
-
-	<!-- header 
-   ================================================== -->
-   <header>   	
-   	<div class="row">
-
-   		<div class="top-bar">
-   			<a class="menu-toggle" href="#"><span>Menu</span></a>
-
-	   		<div class="logo">
-		         <a href="index.html">DEEP</a>
-		      </div>		      
-
-		   	<nav id="main-nav-wrap">
+	<header>
+		<div class="row">
+			<div class="top-bar">
+				<a class="menu-toggle" href="#"><span>Menu</span></a>
+				<div class="logo">
+					<a href="index.html">DEEP</a>
+				</div>
+				<nav id="main-nav-wrap">
 					<ul class="main-navigation">
-						<li class="current"><a class="smoothscroll"  href="#intro" title="">Home</a></li>
-						<li><a class="smoothscroll"  href="#about" title="">About</a></li>
-						<li><a class="smoothscroll"  href="#resume" title="">Resume</a></li>
-						<li><a class="smoothscroll"  href="#portfolio" title="">Portfolio</a></li>
-						<!-- <li><a class="smoothscroll"  href="#services" title="">Services</a></li>					 -->
-						<li><a class="smoothscroll"  href="#contact" title="">Contact</a></li>	
-						<!-- <li><a href="styles.html" title="">Style Demo</a></li>				 -->
+						<li class="current"><a class="smoothscroll" href="#intro" title="">Home</a></li>
+						<li><a class="smoothscroll" href="#about" title="">About</a></li>
+						<li><a class="smoothscroll" href="#resume" title="">Resume</a></li>
+						<li><a class="smoothscroll" href="#portfolio" title="">Portfolio</a></li>
+						<li><a class="smoothscroll" href="#contact" title="">Contact</a></li>
 					</ul>
-				</nav>    		
-   		</div> <!-- /top-bar --> 
-   		
-   	</div> <!-- /row --> 		
-   </header> <!-- /header -->
+				</nav>
+			</div>
+		</div>
+	</header>
 
-	<!-- intro section
-   ================================================== -->
-   <section id="intro">   
-
-   	<div class="intro-overlay"></div>	
-
-   	<div class="intro-content">
-   		<div class="row">
-
-   			<div class="col-twelve ">
-
-	   			<h5 class="">Hello, World.</h5>
-					 <h1>I'm Dipankar</h1>
-	   			<p class="intro-position">
-	   				<!--<span>Full Stack Developer</span>
-						<span>Photographer</span>
-						-->
-	   		
-
-
-					 <h3 style="color:white;">
-							<a href="" class="typewrite" data-period="2000" data-type='["NodeJs","Python","javaScript","c++","C","PHP","JQuery","electronJs","React","CSS","HTML","JAVA"]'style="color:#FF0077;font-family:consolas;">
-								<span class="wrap"></span>
-								<!-- <a href="" class="typewrite" data-period="2000" data-type='[ "Full Stack Developer", "UI/UX Designer", "Web Developer","Photographer","Open Source","NodeJs","Python","javaScript","c++","C","PHP","JQuery","electronJs","React","CSS","HTML","JAVA"]'style="color:#FF0077;font-family:consolas;"> -->
-
-							</a>
-						</h3>
-
+	<!-- Intro Section -->
+	<section id="intro">
+		<div class="intro-overlay"></div>
+		<div class="intro-content">
+			<div class="row">
+				<div class="col-twelve ">
+					<h5 class="">Hello, World.</h5>
+					<h1>I'm Dipankar</h1>
+					<p class="intro-position">
+					<h3 style="color:white;">
+						<a href="" class="typewrite" data-period="2000"
+							data-type='["Yocto","OpenWRT","ARM","Device Driver","MAC80211","C","Python","Shell Script","Systemd","TCP/IP","Docker"]'
+							style="color:#FF0077;font-family:consolas;">
+							<span class="wrap"></span>
+						</a>
+					</h3>
 					</p>
+					<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
+				</div>
+			</div>
+		</div>
+		<ul class="intro-social">
+			<li><a href="https://www.facebook.com/deep.neon" target="_blank"><i class="fa fa-facebook"></i></a></li>
+			<li><a href="https://www.github.com/deep5050" target="_blank"><i class="fa fa-github"></i></a></li>
+			<li><a href="https://www.instagram.com/dpnkr.pl" target="_blank"><i class="fa fa-instagram"></i></a></li>
+		</ul>
+	</section>
 
-	   			<a class="button stroke smoothscroll" href="#about" title="">More About Me</a>
+	<!-- About Section -->
+	<section id="about">
+		<div class="row section-intro ">
+			<div class="col-twelve">
+				<h5>About</h5>
+				<h1>Let Me Introduce Myself</h1>
+				<div class="intro-info">
+					<img src="images/profile-pic.png" alt="Profile Picture" width="150px">
+					<p class="lead" style="color: #FF0077;">An Embedded software developer who loves to play with
+						hardwares :) Most of the times you will find me writing C or Shell
+						Scripts and tweaking the Linux kernel, if not then I'm probably out with my camera.</p>
+				</div>
+			</div>
+		</div>
+		<div class="row about-content">
+			<div class="col-six tab-full">
+				<h3>Profile</h3>
+				<ul class="info-list">
+					<li>
+						<strong>Full Name:</strong>
+						<span>Dipankar Pal</span>
+					</li>
+					<li>
+						<strong>Birth Date:</strong>
+						<span>July 15, 1997</span>
+					</li>
+					<li>
+						<strong>Job:</strong>
+						<span>Alumnus Software, kolkata</span>
+					</li>
+					<li>
+						<strong>Website:</strong>
+						<span>www.deep5050.github.io</span>
+					</li>
+					<li>
+						<strong>Email:</strong>
+						<span><a href="mailto:d.pal5050@gmail.com">d.pal5050@gmail.com</a></span>
+					</li>
+				</ul>
+			</div>
 
-	   		</div>  
-   			
-   		</div>   		 		
-   	</div> <!-- /intro-content --> 
-
-   	<ul class="intro-social">        
-         <li><a href="https://www.facebook.com/deep.neon" target="_blank"><i class="fa fa-facebook"></i></a></li>
-         <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
-         <!-- <li><a href="#"><i class="fa fa-slack"></i></a></li> -->
-         <li><a href="https://www.github.com/deep5050" target="_blank" ><i class="fa fa-github"></i></a></li>
-         <li><a href="https://www.instagram.com/dipankarpal5050" target="_blank"><i class="fa fa-instagram"></i></a></li>
-      </ul> <!-- /intro-social -->      	
-
-   </section> <!-- /intro -->
-
-
-   <!-- about section
-   ================================================== -->
-   <section id="about">  
-
-   	<div class="row section-intro ">
-   		<div class="col-twelve">
-
-   			<h5>About</h5>
-   			<h1>Let Me Introduce Myself</h1>
-
-   			<div class="intro-info">
-
-   				<img src="images/profile-pic.png" alt="Profile Picture">
-
-   				<p class="lead" style="color: #FF0077;">I Am A Full Stack Developer Currently Pursuing A Master's Degree In Computer Science With A Keen Interest In Web Development And Gradually Pushing Myself Into Machine Learning And UI/UX Designing.</p>
-   			</div>   			
-
-   		</div>   		
-   	</div> <!-- /section-intro -->
-
-   	<div class="row about-content">
-
-   		<div class="col-six tab-full">
-
-   			<h3>Profile</h3>
-   			<!-- <p>Lorem ipsum Qui veniam ut consequat ex ullamco nulla in non ut esse in magna sint minim officia consectetur nisi commodo ea magna pariatur nisi cillum.</p> -->
-
-   			<ul class="info-list">
-   				<li>
-   					<strong>Fullname:</strong>
-   					<span>Dipankar Pal</span>
-   				</li>
-   				<li>
-   					<strong>Birth Date:</strong>
-   					<span>July 15, 1997</span>
-   				</li>
-   				<li>
-   					<strong>Job:</strong>
-   					<span>Looking For A JOb :)</span>
-   				</li>
-   				<li>
-   					<strong>Website:</strong>
-   					<span>www.deep5050.github.io</span>
-   				</li>
-   				<li>
-   					<strong>Email:</strong>
-   					<span><a href="mailto:d.pal5050@gmail.com">d.pal5050@gmail.com</a></span>
-   				</li>
-   			</ul> 
-   		</div>
-
-   		<div class="col-six tab-full">
-   			<h3>Skills</h3>
-   			
+			<div class="col-six tab-full">
+				<h3>Skills</h3>
 				<ul class="skill-bars">
-				   <li>
-				   	<div class="progress percent90"><span>90%</span></div>
-				   	<strong>HTML5</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent70"><span>70%</span></div>
-				   	<strong>CSS3</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent70"><span>70%</span></div>
-				   	<strong>JQuery</strong>
-				   </li>
-				   <li>
-				   	<div class="progress percent50"><span>50%</span></div>
-				   	<strong>PHP</strong>
-                   </li>
-                   <li>
-                   <div class="progress percent60"><span>60%</span></div>
-                   <strong>C</strong>
-               </li>
-               <li>
-               <div class="progress percent50"><span>50%</span></div>
-               <strong>Python</strong>
-           </li>
-           <li>
-           <div class="progress percent40"><span>40%</span></div>
-           <strong>Java</strong>
-       </li>
-				   <!-- <li> -->
+					<li>
+						<div class="progress percent90"><span>90%</span></div>
+						<strong>C</strong>
+					</li>
+					<li>
+						<div class="progress percent70"><span>70%</span></div>
+						<strong>Python</strong>
+					</li>
+					<li>
+						<div class="progress percent80"><span>80%</span></div>
+						<strong>Shell Script</strong>
+					</li>
+					<li>
+						<div class="progress percent70"><span>70%</span></div>
+						<strong>Yocto</strong>
+					</li>
+					<li>
+						<div class="progress percent40"><span>40%</span></div>
+						<strong>OpenWRT</strong>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="row button-section">
+			<div class="col-twelve">
+				<a href="./assets/dipankar_pal_cv.pdf" title="Download CV" class="button button-primary">Download CV</a>
+			</div>
+		</div>
+	</section>
 
-				   	<!-- <div class="progress percent75"><span>75%</span></div>
-				   	<strong>Wordpress</strong>
-				   </li>
-       -->
-				</ul> <!-- /skill-bars -->		
-
-   		</div>
-
-   	</div>
-
-   	<div class="row button-section">
-   		<div class="col-twelve">
-   			<!-- <a href="#contact" title="Hire Me" class="button stroke smoothscroll">Hire Me</a> -->
-   			<a href="./assets/dipankar_pal_cv.pdf" title="Download CV" class="button button-primary">Download CV</a>
-   		</div>   		
-   	</div>
-
-   </section> <!-- /process-->    
-
-
-   <!-- resume Section
-   ================================================== -->
+	<!-- Resume Section-->
 	<section id="resume" class="grey-section">
+		<!-- Work Experience -->
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
+				<h2>Work Experience</h2>
+			</div>
+			<div class="col-twelve">
+				<div class="timeline-wrap">
+					<div class="timeline-block">
+						<div class="timeline-ico">
+							<i class="fa fa-briefcase"></i>
+						</div>
+						<div class="timeline-header">
+							<h3>Technical Staff</h3>
+							<p>August 2020 - Present</p>
+						</div>
+						<div class="timeline-content">
+							<h4>Alumnus Software</h4>
+							<p>Wireless router development. Embedded Software development.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Education -->
+		<div class="row resume-timeline">
+			<div class="col-twelve resume-header">
+				<h2>Education</h2>
+			</div>
+			<div class="col-twelve">
+				<div class="timeline-wrap">
+					<div class="timeline-block">
+						<div class="timeline-ico">
+							<i class="fa fa-graduation-cap"></i>
+						</div>
+						<div class="timeline-header">
+							<h3>Master Degree</h3>
+							<p>September 2018 - Present</p>
+						</div>
+						<div class="timeline-content">
+							<h4>University of Calcutta</h4>
+							<p>Calcutta University Technology Campus, Block-JD,sector 3, Saltlake, Kolkata,India</p>
+						</div>
+					</div>
 
-		<!-- <div class="row section-intro">
-   		<div class="col-twelve">
+					<div class="timeline-block">
+						<div class="timeline-ico">
+							<i class="fa fa-graduation-cap"></i>
+						</div>
+						<div class="timeline-header">
+							<h3>Bachelor Degree</h3>
+							<p>August 2015 - June 2018</p>
+						</div>
+						<div class="timeline-content">
+							<h4>Syamaprasad College</h4>
+							<p>Syamaprasad Mukherjee Road, Kolkata-25, India</p>
+						</div>
+					</div>
 
-   			<h5>Resume</h5>
-   			<h1>More of my credentials.</h1>
+					<div class="timeline-block">
+						<div class="timeline-ico">
+							<i class="fa fa-graduation-cap"></i>
+						</div>
+						<div class="timeline-header">
+							<h3>Higher Secondary Degree</h3>
+							<p>May 2013 - June 2015</p>
+						</div>
+						<div class="timeline-content">
+							<h4>CINS</h4>
+							<p>Chakrasul, East MidnaPore, West Bengal-721456</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-   			<p class="lead">Lorem ipsum Do commodo in proident enim in dolor cupidatat adipisicing dolore officia nisi aliqua incididunt Ut veniam lorem ipsum Consectetur ut in in eu do.</p>
-
-   		</div>   		 -->
-   	<!-- </div> /section-intro  -->
-
-   	<!-- <div class="row resume-timeline"> -->
-
-   		<!-- <div class="col-twelve resume-header">
-
-   			<h2>Work Experience</h2> -->
-
-   		<!-- </div> /resume-header -->
-
-   		<!-- <div class="col-twelve"> -->
-
-   			<!-- <div class="timeline-wrap"> -->
-
-   				<!-- <div class="timeline-block"> -->
-
-	   				<!-- <div class="timeline-ico"> -->
-	   					<!-- <i class="fa fa-graduation-cap"></i> -->
-	   				<!-- </div> -->
-
-	   				<!-- <div class="timeline-header"> -->
-	   					<!-- <h3>UI Designer</h3> -->
-	   					<!-- <p>July 2015 - Present</p> -->
-	   				<!-- </div> -->
-
-	   				<!-- <div class="timeline-content"> -->
-	   					<!-- <h4>Awesome Studio</h4> -->
-	   					<!-- <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi.</p> -->
-	   				<!-- </div> -->
-
-	   			<!-- </div> /timeline-block -->
-
-	   			<!-- <div class="timeline-block"> -->
-
-	   				<!-- <div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div> -->
-
-	   				<!-- <div class="timeline-header">
-	   					<h3>Front-end Developer</h3>
-	   					<p>July 2014 - June 2015</p> -->
-	   				<!-- </div> -->
-
-	   				<!-- <div class="timeline-content"> -->
-	   					<!-- <h4>Super Cool Agency</h4> -->
-	   					<!-- <p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p> -->
-	   				<!-- </div> -->
-
-	   			<!-- </div> /timeline-block -->
-
-	   			<!-- <div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-graduation-cap"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Web Designer</h3>
-	   					<p>May 2013 - June 2014</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>Great Designs Studio</h4>
-	   					<p>Lorem ipsum Occaecat do esse ex et dolor culpa nisi ex in magna consectetur nisi cupidatat laboris esse eiusmod deserunt aute do quis velit esse sed Ut proident cupidatat nulla esse cillum laborum occaecat nostrud sit dolor incididunt amet est occaecat nisi incididunt.</p>
-	   				</div> -->
-
-	   			<!-- </div> /timeline-block -->
-
-   			<!-- </div> /timeline-wrap   			 -->
-
-   		<!-- </div> /col-twelve -->
-   		
-   	<!-- </div>  -->
-   	
-   	<div class="row resume-timeline">
-
-   		<div class="col-twelve resume-header">
-
-   			<h2>Education</h2>
-
-   		</div> <!-- /resume-header -->
-
-   		<div class="col-twelve">
-
-   			<div class="timeline-wrap">
-
-   				<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Master Degree</h3>
-	   					<p>september 2018 - Present</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>University of Calcutta</h4>
-	   					<p>Calcutta University Technology Campus, block-JD,sector 3,saltlake,kolkata,INDIA</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Bachelor Degree</h3>
-	   					<p>August 2015 - June 2018</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>Syamaprasad College</h4>
-	   					<p>Syamaprasad Mukherjee Road,Kolkata-25,INDIA</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-	   			<div class="timeline-block">
-
-	   				<div class="timeline-ico">
-	   					<i class="fa fa-briefcase"></i>
-	   				</div>
-
-	   				<div class="timeline-header">
-	   					<h3>Higher Secondary Degree</h3>
-	   					<p>May 2013 - June 2015</p>
-	   				</div>
-
-	   				<div class="timeline-content">
-	   					<h4>CINS</h4>
-	   					<p>Chakrasul,East MidnaPore,West Bengal-721456</p>
-	   				</div>
-
-	   			</div> <!-- /timeline-block -->
-
-   			</div> <!-- /timeline-wrap -->   			
-
-   		</div> <!-- /col-twelve -->
-   		
-   	</div> <!-- /resume-timeline -->
-		
-	</section> <!-- /features -->
-
-
-	<!-- Portfolio Section
-   ================================================== -->
+	<!-- Portfolio Section -->
 	<section id="portfolio">
-
 		<div class="row section-intro">
-   		<div class="col-twelve">
+			<div class="col-twelve">
+				<h5>Portfolio</h5>
+				<h1>Some of My Works</h1>
+				<p class="lead" style="color: #FF0077;">Check out my other open source projects on GitHub.</p>
+			</div>
+		</div>
 
-   			<h5>Portfolio</h5>
-   			<h1>Some of My Works.</h1>
+	<!-- Add portfolio-section.html here -->
+	</section>
 
-   			<p class="lead">Check out some of my open source projects on GitHub.</p>
-
-   		</div>   		
-   	</div> <!-- /section-intro--> 
-
-   	<div class="row portfolio-content">
-
-   		<div class="col-twelve">
-
-   			<!-- portfolio-wrapper -->
-	         <div id="folio-wrapper" class="block-1-2 block-mob-full stack">
-
-	         	<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="images/portfolio/qikqr.png" alt="qikqr">
-	                  <a href="#modal-01" class="overlay">	                  	           
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-		     					       <h3 class="folio-title">QikQR</h3>	     					    
-		     					    	 <span class="folio-types">
-		     					       	 QR code builder app made with electron js
-		     					       </span>
-		     					   </div>	                      	
-	                     </div>                    
-	                  </a>
-	               </div>	               
-	        		</div> <!-- /folio-item -->
-
-	        		<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="images/portfolio/caldget.png" alt="Calender Widget">
-	               	<a href="#modal-02" class="overlay">              		                  
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">CaldGet</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  A Minimal Calender Widget For Your Beautiful Desktop
-		     					      </span>		     		
-		     					   </div> 	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> <!-- /folio-item -->
-
-	            <div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="images/portfolio/minimalweather.png"alt="Miniman Weather">
-	                  <a href="#modal-03" class="overlay">             		                  
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Minimal Weather</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	Minimalistic Cross-Platform Weather Application 
-		     					      </span>		     		
-		     					   </div> 	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> <!-- /folio-item -->
-
-	            <div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="images/portfolio/scrapers.png" alt="web sacrapers">
-	                  <a href="#modal-04" class="overlay">                  	                 
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Web Scrapers</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  Awesome Python Web Scrapers
-		     					      </span>		     		
-		     					   </div>  	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> <!-- /folio-item -->     
-
-	        	<!--	<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="images/portfolio/lighthouse.jpg" alt="Lighthouse">
-	                  <a href="#modal-05" class="overlay">             		                  
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Lighthouse</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  Web Development
-		     					      </span>		     		
-		     					   </div> 	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> /folio-item -->
-
-	            <!--<div class="bgrid folio-item">
-	               <div class="item-wrap">
-	               	<img src="images/portfolio/salad.jpg" alt="Salad">
-	                  <a href="#modal-06" class="overlay">
-	                     <div class="folio-item-table">
-	                     	<div class="folio-item-cell">
-	                     		<h3 class="folio-title">Salad</h3>	     					    
-		     					    	<span class="folio-types">
-		     					       	  Branding
-		     					      </span>		     		
-		     					   </div>	                      	
-	                     </div>                    
-	                  </a>
-	               </div>
-	        		</div> /folio-item -->   
-
-	            <!-- modal popups - begin
-	            ============================================================= -->
-	            <div id="modal-01" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/qikqr.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>QikQr</h4>		      
-					      <p></p>
-
-					      <div class="categories">Desktop Apps</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://www.github.com/deep5050/qikQR">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-01 -->
-
-				   <div id="modal-02" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/caldget.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Calender Widget</h4>		      
-					      <p>Minimal Calender Widget For Your Clean Desktop</p>
-
-					      <div class="categories">Desktop Apps</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://www.github.com/deep5050/caldget">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-02 -->
-
-				   <div id="modal-03" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/minimalweather-modal.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>minimal Weather</h4>		      
-					      <p> A minimalistic but smart weather app made with electron API</p>
-
-					      <div class="categories">Desktop Apps</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="https://www.github.com/deep5050/minimal-weather">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-03 -->
-
-				   <div id="modal-04" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/scrapers.png" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Web Scrapers</h4>		      
-					      <p>Useful Web Scraping Scripts Written In Python With BeautifulSoup Library</p>
-
-					      <div class="categories">Web Scapers</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="ttps://www.github.com/deep5050/deep-scraping-python">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-04 -->
-
-				   <div id="modal-05" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/m-lighthouse.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Lighthouse</h4>		      
-					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-					      <div class="categories">Web Development</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="http://www.behance.net">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-05 -->
-
-				   <div id="modal-06" class="popup-modal slider mfp-hide">	
-
-				     	<div class="media">
-				     		<img src="images/portfolio/modals/m-salad.jpg" alt="" />
-				     	</div>      	
-
-					   <div class="description-box">
-					      <h4>Salad</h4>		      
-					      <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit.</p>
-
-					      <div class="categories">Branding</div>			               
-					   </div>
-
-			         <div class="link-box">
-			            <a href="http://www.behance.net">Details</a>
-					      <a href="#" class="popup-modal-dismiss">Close</a>
-			         </div>		      
-
-				   </div> <!-- /modal-06 -->
-
-
-				   <!-- modal popups - end
-	            ============================================================= -->
-
-	         </div> <!-- /portfolio-wrapper --> 
-
-   		</div>  <!-- /twelve -->   
-
-   	</div> <!-- /portfolio-content --> 
-		
-	</section> <!-- /portfolio --> 
-
-
-	<!-- CTA Section
-	 ================================================== -->
-
-	 
+	<!-- Donate Section -->
 	<section id="cta" class="grey-section">
-
-   	<div class="row cta-content">
-
-   		<div class="col-twelve section-ads">  
-
-	     		<h2 class="h01">Help Me To Stay Open Source</h2>
-		      <p class="lead">
-							<a class="button button-primary large" href="http://www.paypal.me/deep5050" target="_blank" rel="noopener noreferrer">Donate Me On PayPal</a>
+		<div class="row cta-content">
+			<div class="col-twelve section-ads">
+				<h2 class="h01">Help Me To Stay Open Source</h2>
+				<p class="lead">
+					<a class="button button-primary large" href="http://www.paypal.me/deep5050" target="_blank"
+						rel="noopener noreferrer">Donate Me On PayPal</a>
 				</p>
-   		</div>
+			</div>
+		</div>
+	</section>
 
-   	</div> <!-- /cta-content -->
-
-   </section> <!-- /cta --> 
-
-	
-	<!-- services Section
-   ================================================== -->
+	<!-- Services Section -->
 	<section id="services">
-
 		<div class="overlay"></div>
-
 		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Services</h5>
-   			<h1>What Can I Do For You?</h1>
-
-   			<p class="lead"></p>
-
-   		</div>   		
-   	</div> <!-- /section-intro -->
-
-   	<div class="row services-content">
-
-   		<div id="owl-slider" class="owl-carousel services-list">
-
-	      	<div class="service">	
-
-	      		<span class="icon"><i class="icon-earth"></i></span>            
-
-	            <div class="service-content">	
-
-	            	 <h3>Webdesign</h3>
-
-		            <!-- <p class="desc">
-									I know Bootstrap,semantic
-	         		</p> -->
-	         		
-	         	</div> 	         	 
-
-				</div> <!-- /service -->
-
-				<div class="service">	
-
-					<span class="icon"><i class="icon-window"></i></span>                          
-
-	            <div class="service-content">	
-
-	            	<h3>Web Development</h3>  
-
-		            <!--<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p>-->
-
-	            </div>	                          
-
-			   </div> <!-- /service -->
-
+			<div class="col-twelve">
+				<h5>Services</h5>
+				<h1>What Can I Do For You?</h1>
+				<p class="lead"></p>
+			</div>
+		</div>
+		<div class="row services-content">
+			<div id="owl-slider" class="owl-carousel services-list">
+				<div class="service">
+					<span class="icon"><i class="icon-terminal"></i></span>
+					<div class="service-content">
+						<h3>Custom Linux Image</h3>
+					</div>
+				</div>
+				<div class="service">
+					<span class="icon"><i class="icon-window"></i></span>
+					<div class="service-content">
+						<h3>Device Driver</h3>
+					</div>
+				</div>
+				<div class="service">
+					<span class="icon"><i class="icon-toggles"></i></span>
+					<div class="service-content">
+						<h3>System Tweaking</h3>
+					</div>
+				</div>
 
 				<div class="service">
+					<span class="icon"><i class="icon-image"></i></span>
+					<div class="service-content">
+						<h3>System Design</h3>
+					</div>
+				</div>
+				<div class="service">
+					<span class="icon"><i class="icon-chat"></i></span>
+					<div class="service-content">
+						<h3>Consultancy</h3>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-					<span class="icon"><i class="icon-toggles"></i></span>	              
-
-	            <div class="service-content">
-
-	            	<h3>UI/UX Design</h3>
-
-		           <!--<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	         		</p> --> 
-	         		
-	            </div>                
-
-				</div> <!-- /service -->
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="icon-image"></i></span>	            
-
-	            <div class="service-content">
-
-	            	<h3>Graphics Design</h3>
-
-		           <!-- <p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> -->
-
-	            </div>	               
-
-			   </div> <!-- /service -->
-
-			   <div class="service">
-
-			   	<span class="icon"><i class="icon-chat"></i></span>	   	           
-
-	            <div class="service-content">
-
-	            	 <h3>Consultancy</h3>
-
-		            <!--<p class="desc">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
-	        			</p> -->
-	        			
-	            </div>	               
-
-			   </div> <!-- /service -->
-
-	      </div> <!-- /services-list -->
-   		
-   	</div> <!-- /services-content -->
-		
-	</section> <!-- /services -->	
-
-
-	<!-- stats Section
-   ================================================== -->
-	<!-- <section id="stats" class="count-up">
-
-		<div class="row">
-			<div class="col-twelve">
-
-				<div class="block-1-6 block-s-1-3 block-tab-1-2 block-mob-full stats-list">
-
-					<div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-pencil-ruler"></i>
-						</div>
-
-						<h3 class="stat-count">
-							1500
-						</h3>
-
-						<h5 class="stat-title">
-							Projects Completed
-						</h5>
-
-					</div> /stat					 -->
-
-					<!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-users"></i>
-						</div>
-
-						<h3 class="stat-count">
-							900
-						</h3>
-
-						<h5 class="stat-title">
-							Happy Clients
-						</h5>
-
-					</div>  /stat -->
-
-					<!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-badge"></i>
-						</div>
-
-						<h3 class="stat-count">
-							200
-						</h3>
-
-						<h5 class="stat-title">
-							Awards Received
-						</h5>
-
-					</div> -->
-
-					<!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-light-bulb"></i>
-						</div>
-
-						<h3 class="stat-count">
-							120
-						</h3>
-
-						<h5 class="stat-title">
-							Crazy Ideas
-						</h5>
-
-                    </div>  -->
-                    <!-- /stat -->
-
-					<!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-cup"></i>
-						</div>
-
-						<h3 class="stat-count">
-							1500
-						</h3>
-
-						<h5 class="stat-title">
-							Coffee Cups
-						</h5>
-
-                    </div> -->
-                     <!-- /stat -->
-
-					<!-- <div class="bgrid stat">
-
-						<div class="icon-part">
-							<i class="icon-clock"></i>
-						</div>
-
-						<h3 class="stat-count">
-							7200
-						</h3>
-
-						<h5 class="stat-title">
-							Hours
-						</h5>
-
-                    </div> -->
-                     <!-- /stat -->
-
-                <!-- </div>  -->
-                <!-- /stats-list -->
-
-            <!-- </div>  -->
-            <!-- /twelve -->
-        <!-- </div>  -->
-        <!-- /row -->
-
-    <!-- </section> -->
-     <!-- /stats -->
-
-	
-   <!-- contact
-   ================================================== -->
+	<!-- Contact Section -->
 	<section id="contact">
-
 		<div class="row section-intro">
-   		<div class="col-twelve">
-
-   			<h5>Contact</h5>
-   			<h1>I'd Love To Hear From You.</h1>
-
-   			<p class="lead"></p>
-
-   		</div> 
-   	</div> <!-- /section-intro -->
-
-   	<!-- <div class="row contact-form">
-
-   		<div class="col-twelve"> -->
-
-            <!-- form -->
-            <!-- <form name="contactForm" id="contactForm" method="post" action=""> -->
-      			<!-- <fieldset> -->
-
-                  <!-- <div class="form-field"> -->
- 						   <!-- <input name="contactName" type="text" id="contactName" placeholder="Name" value="" minlength="2" required=""> -->
-                  <!-- </div> -->
-                  <!-- <div class="form-field"> -->
-	      			   <!-- <input name="contactEmail" type="email" id="contactEmail" placeholder="Email" value="" required=""> -->
-	               <!-- </div> -->
-                  <!-- <div class="form-field"> -->
-	     				   <!-- <input name="contactSubject" type="text" id="contactSubject" placeholder="Subject" value=""> -->
-	               <!-- </div>                        -->
-                  <!-- <div class="form-field"> -->
-	                 	<!-- <textarea name="contactMessage" id="contactMessage" placeholder="message" rows="10" cols="50" required=""></textarea> -->
-	               <!-- </div>                      
-                 <div class="form-field">
-                     <button class="submitform">Submit</button>
-                     <div id="submit-loader">
-                        <div class="text-loader">Sending...</div>                             
-       				      <div class="s-loader">
-								  	<div class="bounce1"></div>
-								  	<div class="bounce2"></div>
-								  	<div class="bounce3"></div>
-								</div>
-							</div>
-                  </div>
-
-      			</fieldset>
-              </form>  -->
-              <!-- Form End -->
-
-            <!-- contact-warning -->
-            <!-- <div id="message-warning">            	 -->
-            <!-- </div>             -->
-            <!-- contact-success -->
-      		<!-- <div id="message-success">
-               <i class="fa fa-check"></i>Your message was sent, thank you!<br>
-      		</div> -->
-
-         <!-- </div>  -->
-         <!-- /col-twelve -->
-   		
-       <!-- </div> -->
-        <!-- /contact-form -->
-
-   	<div class="row contact-info">
-
-   		<div class="col-four tab-full">
-
-   			<div class="icon">
-   				<i class="icon-pin"></i>
-   			</div>
-
-   			<h5>Where to find me</h5>
-
-   			<p>
-					 <a href="https://www.google.co.in/maps/place/Calcutta+University+Hostel/@22.6285867,88.3819851,18.55z/data=!4m5!3m4!1s0x39f89d9346f66251:0x7a5ff7695f4f35ec!8m2!3d22.6283901!4d88.3814364" target="_blank" rel="noopener noreferrer" style="color:grey;"> 165/1 South Sinthee <br>
-            Kolkata, INDIA</a>
-           
-            </p>
-
-   		</div>
-
-   		<div class="col-four tab-full collapse">
-
-   			<div class="icon">
-   				<i class="icon-mail"></i>
-   			</div>
-
-               <h5>Email Me At</h5>
-
-   			<p>
+			<div class="col-twelve">
+				<h5>Contact</h5>
+				<h1>I'd Love To Hear From You.</h1>
+				<p class="lead"></p>
+			</div>
+		</div>
+		<div class="row contact-info">
+			<div class="col-four tab-full">
+				<div class="icon">
+					<i class="icon-pin"></i>
+				</div>
+				<h5>Where to find me</h5>
+				<p>
+					<a href="https://www.google.com/maps/place/Kestopur,+Kolkata,+West+Bengal/@22.5950648,88.4188571,14z/data=!3m1!4b1!4m5!3m4!1s0x3a02759bb5d7c6a9:0x6e0766f360bbcff4!8m2!3d22.5971854!4d88.4370585"
+						target="_blank" rel="noopener noreferrer" style="color:grey;">Kolkata, WB-700102, India</a>
+				</p>
+			</div>
+			<div class="col-four tab-full collapse">
+				<div class="icon">
+					<i class="icon-mail"></i>
+				</div>
+				<h5>Email Me At</h5>
+				<p>
 					<a href="mailto:d.pal5050@gmail.com" style="color:grey;">d.pal5050@gmail.com</a>
-			</p>
-   		</div>
+				</p>
+			</div>
+			<div class="col-four tab-full">
+				<div class="icon">
+					<i class="icon-phone"></i>
+				</div>
+				<h5>Call Me At</h5>
+				<p>Mobile: <a href="tel:+919775942932" style="color:grey;"> (+91) 9775942932</a> <br>
+				</p>
+			</div>
+		</div>
+	</section>
 
-   		<div class="col-four tab-full">
+	<!-- footer -->
+	<footer>
+		<div class="row">
+			<div class="col-six tab-full pull-right social">
+				<ul class="footer-social">
+					<li><a href="https://www.facebook.com/deep.neon"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://www.github.com/deep5050"><i class="fa fa-github"></i></a></li>
+					<li><a href="https://www.instagram.com/dipankarpal5050"><i class="fa fa-instagram"></i></a></li>
+				</ul>
+			</div>
+			<div class="col-six tab-full">
+				<div class="copyright">
+					<span>© Copyright Dipankar Pal 2022.</span>
+				</div>
+			</div>
+			<div id="go-top">
+				<a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
+			</div>
+		</div>
+	</footer>
 
-   			<div class="icon">
-   				<i class="icon-phone"></i>
-   			</div>
+	<div id="preloader">
+		<div id="loader"></div>
+	</div>
 
-   			<h5>Call Me At</h5>
-
-   			<p>Phone: <a href="tel:+919775942932" style="color:grey;"> (+91) 9775942932</a> <br>
-			   	Mobile: <a href="tel:+917029464070" style="color:grey;"> (+91) 7029464070</a> <br>
-			   </p>
-
-   		</div>
-   		
-   	</div> <!-- /contact-info -->
-		
-	</section> <!-- /contact -->
-
-
-   <!-- footer
-   ================================================== -->
-
-   <footer>
-     	<div class="row">
-
-     		<div class="col-six tab-full pull-right social">
-
-     			<ul class="footer-social">        
-			      <li><a href="https://www.facebook.com/deep.neon"><i class="fa fa-facebook"></i></a></li>
-			      <!-- <li><a href="#"><i class="fa fa-behance"></i></a></li> -->
-			      <!-- <li><a href="#"><i class="fa fa-twitter"></i></a></li> -->
-			      <li><a href="https://www.github.com/deep5050"><i class="fa fa-github"></i></a></li>
-			      <li><a href="https://www.instagram.com/dipankarpal5050"><i class="fa fa-instagram"></i></a></li>
-			   </ul> 
-	      		
-	      </div>
-
-      	<div class="col-six tab-full">
-	      	<div class="copyright">
-		        	<span>© Copyright Dipankar Pal 2019.</span> 	
-		         </div>		                  
-	      	</div>
-
-	      	<div id="go-top">
-		         <a class="smoothscroll" title="Back to Top" href="#top"><i class="fa fa-long-arrow-up"></i></a>
-		      </div>
-
-      	</div> <!-- /row -->     	
-   </footer>  
-
-   <div id="preloader"> 
-    	<div id="loader"></div>
-   </div> 
-
-   <!-- Java Script
-   ================================================== --> 
-   <script src="js/jquery-2.1.3.min.js"></script>
-   <script src="js/plugins.js"></script>
-   <script src="js/main.js"></script>
-
+	<!-- Java Script -->
+	<script src="js/jquery-2.1.3.min.js"></script>
+	<script src="js/plugins.js"></script>
+	<script src="js/main.js"></script>
 </body>
-
 </html>

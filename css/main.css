@@ -1516,8 +1516,8 @@ header .logo a {
  */
 #about {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 15rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 #about .section-intro {
 	margin-bottom: 3rem;
@@ -1646,8 +1646,8 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #resume {
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 
 #resume .resume-header {
@@ -1816,8 +1816,8 @@ header .logo a {
  */
 #portfolio {
 	background: #FFFFFF;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 }
 #portfolio .folio-item {
 	padding: 0;
@@ -2052,8 +2052,8 @@ header .logo a {
  * ------------------------------------------------------------------- 
  */
 #cta {
-	padding-top: 10.2rem;
-	padding-bottom: 9rem;
+	padding-top: 3rem;
+	padding-bottom: 0rem;
 	text-align: center;
 }
 #cta p.lead {
@@ -2124,8 +2124,8 @@ header .logo a {
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	background-size: cover;
-	padding-top: 12rem;
-	padding-bottom: 12rem;
+	padding-top: 3rem;
+	padding-bottom: 3rem;
 	color: white;
 	position: relative;
 }
@@ -2276,8 +2276,8 @@ header .logo a {
  */
 #contact {
 	background: #151515;
-	padding-top: 12rem;
-	padding-bottom: 7.2rem;
+	padding-top: 3rem;
+	padding-bottom: 2rem;
 }
 #contact .section-intro h1 {
 	color: white;
